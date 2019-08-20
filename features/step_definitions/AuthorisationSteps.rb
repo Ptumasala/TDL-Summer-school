@@ -1,4 +1,6 @@
-Given(/^I am on login page$/) do
+# (/^ ......... $/) is called a regular expression and is used to help programm to find your comands
+
+Given(/^I am on Discord login page$/) do
   @pages.login.load_home_page
 end
 
@@ -17,6 +19,12 @@ And(/^I login as (.*)/) do |user|
     end
   end
   
+  Then (/^I see that login was successful$/) do
+    @pages.home.homeButton.visible?
+    @pages.home.friendsTab.visible?
+    @pages.home.userSettings.visible?
+  end
+
   And(/^I click on skip the tutorial/) do
     if @pages.login.skipButton.visible?
       @pages.login.skipButton.click
